@@ -1,0 +1,39 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.davemorrissey.labs.subscaleview.sample"
+    android:hardwareAccelerated="true">
+
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:node="remove" />
+
+    <application
+        android:label="@string/app.name"
+        android:theme="@style/sampleTheme"
+        android:icon="@mipmap/launcher"
+        android:allowBackup="false">
+        <activity
+            android:name=".MainActivity"
+            android:label="Scale View Demo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".basicfeatures.BasicFeaturesActivity" />
+        <activity android:name=".imagedisplay.ImageDisplayActivity" />
+        <activity android:name=".eventhandling.EventHandlingActivity" />
+        <activity android:name=".eventhandlingadvanced.AdvancedEventHandlingActivity" />
+        <activity android:name=".viewpager.ViewPagerActivity" />
+        <activity android:name=".animation.AnimationActivity" />
+        <activity android:name=".extension.ExtensionActivity" />
+        <activity android:name=".configuration.ConfigurationActivity" />
+    </application>
+</manifest>
+
