@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="sampleTheme" parent="@android:style/Theme.Holo">
-        <item name="android:actionBarStyle">@style/sampleActionBar</item>
-        <item name="android:windowBackground">@color/background</item>
+    <style name="sampleTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">#546E7A</item>
+        <item name="android:colorPrimaryDark">#455A64</item>
+        <item name="android:colorAccent">#FFC107</item>
     </style>
 
-    <style name="sampleActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/actionBarBackground</item>
-    </style>
-
-    <style name="indexDivider">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1px</item>
-        <item name="android:background">#333333</item>
-    </style>
-
-    <style name="indexLink">
+    <style name="indexLink" parent="@style/Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/buttonstate_transparent</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:padding">0dp</item>
     </style>
 
     <style name="fill">
@@ -41,7 +31,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:background">#333</item>
+        <item name="android:background">#546E7A</item>
+        <item name="android:elevation">5dp</item>
     </style>
 
     <style name="footerNote">
@@ -53,13 +44,10 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <style name="footerButton">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="footerButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:background">@drawable/buttonstate_transparent</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
         <item name="android:paddingTop">18dp</item>
         <item name="android:paddingBottom">18dp</item>
     </style>

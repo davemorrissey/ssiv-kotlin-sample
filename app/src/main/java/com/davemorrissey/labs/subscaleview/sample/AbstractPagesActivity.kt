@@ -34,7 +34,7 @@ abstract class AbstractPagesActivity protected constructor(private val title: In
         super.onCreate(savedInstanceState)
         setContentView(layout)
         actionBar?.title = getString(title)
-        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         next.setOnClickListener { next() }
         previous.setOnClickListener { previous() }
         if (savedInstanceState?.containsKey(BUNDLE_PAGE) == true) {

@@ -47,7 +47,6 @@ class MainActivity : Activity() {
         extension.setOnClickListener { startActivity(ExtensionActivity::class.java) }
         configuration.setOnClickListener { startActivity(ConfigurationActivity::class.java) }
         github.setOnClickListener { openGitHub() }
-        self.setOnClickListener { openSelf() }
     }
 
     private fun startActivity(activity: Class<out Activity>) {
