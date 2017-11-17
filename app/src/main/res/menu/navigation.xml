@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single" android:id="@+id/nav_pages">
+        <item
+            android:id="@+id/basicFeatures"
+            android:title="@string/basic.link"
+            android:icon="@drawable/ic_terrain_black_24dp"/>
+        <item
+            android:id="@+id/imageDisplay"
+            android:title="@string/display.link"
+            android:icon="@drawable/ic_crop_rotate_black_24dp"/>
+        <item
+            android:id="@+id/eventHandling"
+            android:title="@string/event.link"
+            android:icon="@drawable/ic_touch_app_black_24dp"/>
+        <item
+            android:id="@+id/advancedEventHandling"
+            android:title="@string/advancedevent.link"
+            android:icon="@drawable/ic_touch_app_black_24dp"/>
+        <item
+            android:id="@+id/viewPagerGalleries"
+            android:title="@string/pager.link"
+            android:icon="@drawable/ic_apps_black_24dp"/>
+        <item
+            android:id="@+id/animation"
+            android:title="@string/animation.link"
+            android:icon="@drawable/ic_play_circle_outline_black_24dp"/>
+        <item
+            android:id="@+id/configuration"
+            android:title="@string/configuration.link"
+            android:icon="@drawable/ic_settings_black_24dp"/>
+        <item
+            android:id="@+id/extension"
+            android:title="@string/extension.link"
+            android:icon="@drawable/ic_layers_black_24dp"/>
+    </group>
+    <group android:checkableBehavior="none" android:id="@+id/nav_links">
+        <item
+            android:id="@+id/github"
+            android:title="@string/main.viewongithub"
+            android:icon="@drawable/github_black"/>
+        <item
+            android:id="@+id/self"
+            android:title="@string/main.self"
+            android:icon="@drawable/ic_face_black_24dp"/>
+    </group>
+</menu>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="sampleTheme" parent="android:Theme.Material.Light.DarkActionBar">
-        <item name="android:colorPrimary">#546E7A</item>
-        <item name="android:colorPrimaryDark">#455A64</item>
-        <item name="android:colorAccent">#FFC107</item>
+    <style name="sampleTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primaryDark</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="indexLink" parent="@style/Widget.AppCompat.Button.Borderless">
@@ -25,13 +27,14 @@
         <item name="android:layout_above">@+id/footer</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/imageViewBackground</item>
     </style>
 
     <style name="footer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:background">#546E7A</item>
+        <item name="android:background">@color/primaryDark</item>
         <item name="android:elevation">5dp</item>
     </style>
 
@@ -44,22 +47,21 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <style name="footerButton" parent="@style/Widget.AppCompat.Button.Borderless">
+    <style name="footerButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:paddingTop">18dp</item>
-        <item name="android:paddingBottom">18dp</item>
+        <item name="android:scaleType">center</item>
     </style>
 
     <style name="previousButton" parent="@style/footerButton">
         <item name="android:layout_alignParentStart">true</item>
-        <item name="android:src">@drawable/previous</item>
+        <item name="android:src">@drawable/ic_navigate_before_white_36dp</item>
     </style>
 
     <style name="nextButton" parent="@style/footerButton">
         <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:src">@drawable/next</item>
+        <item name="android:src">@drawable/ic_navigate_next_white_36dp</item>
     </style>
 
 </resources>

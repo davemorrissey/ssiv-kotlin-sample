@@ -1,61 +1,97 @@
-/*
-Copyright 2014 David Morrissey
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 package com.davemorrissey.labs.subscaleview.sample
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 
-import com.davemorrissey.labs.subscaleview.sample.animation.AnimationActivity
-import com.davemorrissey.labs.subscaleview.sample.basicfeatures.BasicFeaturesActivity
-import com.davemorrissey.labs.subscaleview.sample.configuration.ConfigurationActivity
-import com.davemorrissey.labs.subscaleview.sample.eventhandling.EventHandlingActivity
-import com.davemorrissey.labs.subscaleview.sample.eventhandlingadvanced.AdvancedEventHandlingActivity
-import com.davemorrissey.labs.subscaleview.sample.extension.ExtensionActivity
-import com.davemorrissey.labs.subscaleview.sample.imagedisplay.ImageDisplayActivity
-import com.davemorrissey.labs.subscaleview.sample.viewpager.ViewPagerActivity
+import com.davemorrissey.labs.subscaleview.sample.animation.AnimationFragment
+import com.davemorrissey.labs.subscaleview.sample.configuration.ConfigurationFragment
+import com.davemorrissey.labs.subscaleview.sample.eventhandling.EventHandlingFragment
+import com.davemorrissey.labs.subscaleview.sample.eventhandlingadvanced.AdvancedEventHandlingFragment
+import com.davemorrissey.labs.subscaleview.sample.extension.ExtensionFragment
+import com.davemorrissey.labs.subscaleview.sample.imagedisplay.ImageDisplayFragment
+import com.davemorrissey.labs.subscaleview.sample.viewpager.ViewPagersFragment
 
 import kotlinx.android.synthetic.main.main.*
+import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
+import com.davemorrissey.labs.subscaleview.sample.basicfeatures.BasicFeaturesFragment
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
+
+    private var fragmentId: Int = R.id.basicFeatures
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.setTitle(R.string.main_title)
         setContentView(R.layout.main)
-        basicFeatures.setOnClickListener { startActivity(BasicFeaturesActivity::class.java) }
-        imageDisplay.setOnClickListener { startActivity(ImageDisplayActivity::class.java) }
-        eventHandling.setOnClickListener { startActivity(EventHandlingActivity::class.java) }
-        advancedEventHandling.setOnClickListener { startActivity(AdvancedEventHandlingActivity::class.java) }
-        viewPagerGalleries.setOnClickListener { startActivity(ViewPagerActivity::class.java) }
-        animation.setOnClickListener { startActivity(AnimationActivity::class.java) }
-        extension.setOnClickListener { startActivity(ExtensionActivity::class.java) }
-        configuration.setOnClickListener { startActivity(ConfigurationActivity::class.java) }
-        github.setOnClickListener { openGitHub() }
+        setSupportActionBar(toolbar)
+        initNavigationDrawer()
+        if (savedInstanceState?.containsKey(BUNDLE_FRAGMENT) == true) {
+            fragmentId = savedInstanceState.getInt(BUNDLE_FRAGMENT)
+        }
+        setFragment(fragmentId)
     }
 
-    private fun startActivity(activity: Class<out Activity>) {
-        startActivity(Intent(this, activity))
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(BUNDLE_FRAGMENT, fragmentId)
+    }
+
+    fun setToolbarTitle(title: Int) {
+        toolbar?.setTitle(title)
+    }
+
+    fun setToolbarSubtitle(subtitle: Int) {
+        toolbar?.setSubtitle(subtitle)
+    }
+
+    private fun initNavigationDrawer() {
+        navigationView.setCheckedItem(R.id.basicFeatures)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            drawerLayout.closeDrawers()
+            when (menuItem.itemId) {
+                R.id.basicFeatures,
+                R.id.imageDisplay,
+                R.id.eventHandling,
+                R.id.advancedEventHandling,
+                R.id.viewPagerGalleries,
+                R.id.animation,
+                R.id.extension,
+                R.id.configuration -> setFragment(menuItem.itemId)
+                R.id.github -> openGitHub()
+                R.id.self -> openSelf()
+            }
+            true
+        }
+        val actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close)
+        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+    }
+
+    private fun setFragment(id: Int) {
+        fragmentId = id
+        val fragmentClass = when(id) {
+            R.id.basicFeatures -> BasicFeaturesFragment::class.java
+            R.id.imageDisplay -> ImageDisplayFragment::class.java
+            R.id.eventHandling -> EventHandlingFragment::class.java
+            R.id.advancedEventHandling -> AdvancedEventHandlingFragment::class.java
+            R.id.viewPagerGalleries -> ViewPagersFragment::class.java
+            R.id.animation -> AnimationFragment::class.java
+            R.id.configuration -> ConfigurationFragment::class.java
+            R.id.extension -> ExtensionFragment::class.java
+            else -> BasicFeaturesFragment::class.java
+        }
+        val existingFragment = fragmentManager.findFragmentByTag("ROOT")
+        if (existingFragment?.javaClass != fragmentClass) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content, fragmentClass.newInstance(), "ROOT")
+                    .commit()
+        }
     }
 
     private fun openGitHub() {
         val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse("https://github.com/davemorrissey/subsampling-scale-image-view")
+        i.data = Uri.parse("https://github_black.com/davemorrissey/subsampling-scale-image-view")
         startActivity(i)
     }
 
@@ -67,5 +103,9 @@ class MainActivity : Activity() {
 
     override fun onBackPressed() {
         moveTaskToBack(true)
+    }
+
+    companion object {
+        private val BUNDLE_FRAGMENT = "FRAGMENT"
     }
 }

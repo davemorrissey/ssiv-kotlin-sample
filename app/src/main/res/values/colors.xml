@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#111111</color>
-    <color name="actionBarBackground">#282828</color>
+    <color name="primary">#00695C</color>
+    <color name="primaryDark">#004D40</color>
+    <color name="imageViewBackground">#212121</color>
+    <color name="accent">#00695C</color>
+    <color name="menuText">#000000</color>
 </resources>

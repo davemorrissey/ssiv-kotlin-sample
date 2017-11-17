@@ -5,6 +5,10 @@
     <string name="main.title">Subsampling Scale Image View</string>
 
     <string name="main.viewongithub">View on GitHub</string>
+    <string name="main.self">Dave Morrissey</string>
+
+    <string name="drawer.open">Open</string>
+    <string name="drawer.close">Close</string>
 
     <string name="button.animate">Animate</string>
     <string name="button.next">Next</string>

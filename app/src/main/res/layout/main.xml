@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" style="@style/fill">
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <LinearLayout android:orientation="vertical"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.davemorrissey.labs.subscaleview.MainActivity">
 
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/primary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
-            <Button style="@style/indexLink" android:id="@+id/basicFeatures" android:text="@string/basic.link"/>
-            <Button style="@style/indexLink" android:id="@+id/imageDisplay" android:text="@string/display.link"/>
-            <Button style="@style/indexLink" android:id="@+id/eventHandling" android:text="@string/event.link"/>
-            <Button style="@style/indexLink" android:id="@+id/advancedEventHandling" android:text="@string/advancedevent.link"/>
-            <Button style="@style/indexLink" android:id="@+id/viewPagerGalleries" android:text="@string/pager.link"/>
-            <Button style="@style/indexLink" android:id="@+id/animation" android:text="@string/animation.link"/>
-            <Button style="@style/indexLink" android:id="@+id/extension" android:text="@string/extension.link"/>
-            <Button style="@style/indexLink" android:id="@+id/configuration" android:text="@string/configuration.link"/>
+        </android.support.design.widget.AppBarLayout>
 
-        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
 
-        <Button
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/github"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:text="@string/main.viewongithub"/>
+    </android.support.design.widget.CoordinatorLayout>
 
-    </LinearLayout>
-</ScrollView>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        app:itemIconTint="@color/menu_text"
+        app:itemTextColor="@color/menu_text"
+        app:headerLayout="@layout/main_nav_header"
+        app:menu="@menu/navigation"/>
+
+</android.support.v4.widget.DrawerLayout>

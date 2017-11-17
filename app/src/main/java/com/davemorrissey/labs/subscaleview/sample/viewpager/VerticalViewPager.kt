@@ -27,15 +27,15 @@ class VerticalViewPager : ViewPager {
     private inner class VerticalPageTransformer : ViewPager.PageTransformer {
 
         override fun transformPage(view: View, position: Float) {
-            if (position < -1) {
-                view.alpha = 0f
-            } else if (position <= 1) {
-                view.alpha = 1f
-                view.translationX = view.width * -position
-                val yPosition = position * view.height
-                view.translationY = yPosition
-            } else {
-                view.alpha = 0f
+            when {
+                position < -1 -> view.alpha = 0f
+                position <= 1 -> {
+                    view.alpha = 1f
+                    view.translationX = view.width * -position
+                    val yPosition = position * view.height
+                    view.translationY = yPosition
+                }
+                else -> view.alpha = 0f
             }
         }
     }

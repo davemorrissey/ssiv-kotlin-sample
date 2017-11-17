@@ -9,7 +9,7 @@
         <ImageView style="@style/footerButton"
                 android:id="@+id/rotate"
                 android:layout_toStartOf="@id/next"
-                android:src="@drawable/rotate"
+                android:src="@drawable/ic_rotate_right_white_36dp"
                 android:contentDescription="@string/button.rotate"/>
 
         <TextView style="@style/footerNote"

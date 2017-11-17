@@ -9,7 +9,7 @@
         <ImageView style="@style/footerButton"
                 android:id="@+id/reset"
                 android:layout_toStartOf="@id/next"
-                android:src="@drawable/reset"
+                android:src="@drawable/ic_settings_backup_restore_white_36dp"
                 android:contentDescription="@string/button.reset"/>
 
         <TextView style="@style/footerNote"
