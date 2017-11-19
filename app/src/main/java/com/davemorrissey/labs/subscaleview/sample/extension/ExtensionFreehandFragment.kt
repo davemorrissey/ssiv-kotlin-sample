@@ -22,7 +22,7 @@ class ExtensionFreehandFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         previous.setOnClickListener { (parentFragment as ExtensionFragment).previous() }
-        imageView.setImage(ImageSource.asset("squirrel.jpg"))
+        imageView.setImage(ImageSource.asset("butterfly.jpg"))
         reset.setOnClickListener { imageView.reset() }
     }
 }

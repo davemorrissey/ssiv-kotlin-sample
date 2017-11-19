@@ -28,7 +28,7 @@ class AnimationFragment : AbstractPagesFragment(animation_title, animation_activ
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         play.setOnClickListener { play() }
-        imageView.setImage(ImageSource.asset("squirrel.jpg"))
+        imageView.setImage(ImageSource.asset("kingfisher.jpg"))
     }
 
     override fun onPageChanged(page: Int) {

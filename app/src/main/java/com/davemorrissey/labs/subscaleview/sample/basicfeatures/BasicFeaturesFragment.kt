@@ -24,6 +24,6 @@ class BasicFeaturesFragment : AbstractPagesFragment(basic_title, pages_activity,
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageView.setImage(ImageSource.asset("pony.jpg"))
+        imageView.setImage(ImageSource.asset("kingfisher.jpg"))
     }
 }

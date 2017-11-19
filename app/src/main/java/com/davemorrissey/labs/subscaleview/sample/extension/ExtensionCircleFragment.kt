@@ -23,6 +23,6 @@ class ExtensionCircleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         next.setOnClickListener { (parentFragment as ExtensionFragment).next() }
         previous.setOnClickListener { (parentFragment as ExtensionFragment).previous() }
-        imageView.setImage(ImageSource.asset("squirrel.jpg"))
+        imageView.setImage(ImageSource.asset("sanmartino.jpg"))
     }
 }

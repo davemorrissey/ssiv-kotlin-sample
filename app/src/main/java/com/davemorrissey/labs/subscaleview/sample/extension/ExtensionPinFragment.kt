@@ -22,7 +22,7 @@ class ExtensionPinFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         next.setOnClickListener { (parentFragment as ExtensionFragment).next() }
-        imageView.setImage(ImageSource.asset("squirrel.jpg"))
-        imageView.setPin(PointF(1718f, 581f))
+        imageView.setImage(ImageSource.asset("kingfisher.jpg"))
+        imageView.setPin(PointF(565f, 1465f))
     }
 }

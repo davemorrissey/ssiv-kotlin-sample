@@ -31,7 +31,7 @@ class ConfigurationFragment : AbstractPagesFragment(configuration_title, pages_a
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageView.setImage(ImageSource.asset("eagle.jpg"))
+        imageView.setImage(ImageSource.asset("sanmartino.jpg"))
     }
 
     override fun onPageChanged(page: Int) {

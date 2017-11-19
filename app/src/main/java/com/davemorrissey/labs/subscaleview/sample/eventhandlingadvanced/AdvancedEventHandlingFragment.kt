@@ -58,7 +58,7 @@ class AdvancedEventHandlingFragment : AbstractPagesFragment(advancedevent_title,
             }
         })
 
-        imageView.setImage(ImageSource.asset("squirrel.jpg"))
+        imageView.setImage(ImageSource.asset("butterfly.jpg"))
         imageView.setOnTouchListener { _, motionEvent -> gestureDetector.onTouchEvent(motionEvent) }
     }
 

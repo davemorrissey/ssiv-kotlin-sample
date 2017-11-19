@@ -14,3 +14,10 @@ pre-release versions of Android build tools so I can experiment with new feature
 ## About
 
 Copyright 2017 David Morrissey, and licensed under the Apache License, Version 2.0.
+
+## Photo credits
+
+* Kingfisher by Vincent van Zalinge, via [unsplash.com](https://unsplash.com/photos/vUNQaTtZeOo)
+* San Martino by Luca Bravo, via [unsplash.com](https://unsplash.com/photos/lWAOc0UuJ-A)
+* Swiss Road by Ludovic Fremondiere, via [unsplash.com](https://unsplash.com/photos/3XN-BNRDUyY)
+* Butterfly by Boris Smokrovic, via [unsplash.com](https://unsplash.com/photos/BtoUjLUtPnQ)

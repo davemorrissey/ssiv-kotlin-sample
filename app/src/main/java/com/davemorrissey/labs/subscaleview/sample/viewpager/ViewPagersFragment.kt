@@ -56,7 +56,7 @@ class ViewPagersFragment : AbstractPagesFragment(pager_title, view_pager, Arrays
 
     companion object {
 
-        private val IMAGES = arrayOf("eagle.jpg", "pony.jpg")
+        private val IMAGES = arrayOf("butterfly.jpg", "kingfisher.jpg", "swissroad.jpg", "sanmartino.jpg")
     }
 
 }

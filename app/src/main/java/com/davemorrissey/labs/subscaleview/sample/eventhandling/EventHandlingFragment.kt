@@ -23,7 +23,7 @@ class EventHandlingFragment : AbstractPagesFragment(event_title, pages_activity,
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageView.setImage(ImageSource.asset("pony.jpg"))
+        imageView.setImage(ImageSource.asset("swissroad.jpg"))
         imageView.setOnClickListener { v -> Toast.makeText(v.context, "Clicked", Toast.LENGTH_SHORT).show() }
         imageView.setOnLongClickListener { v ->
             Toast.makeText(v.context, "Long clicked", Toast.LENGTH_SHORT).show()

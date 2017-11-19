@@ -22,7 +22,7 @@ class ImageDisplayRotateFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageView.setImage(ImageSource.asset("eagle.jpg"))
+        imageView.setImage(ImageSource.asset("swissroad.jpg"))
         imageView.orientation = 90
         previous.setOnClickListener { (parentFragment as ImageDisplayFragment).previous() }
         next.setOnClickListener { (parentFragment as ImageDisplayFragment).next() }
