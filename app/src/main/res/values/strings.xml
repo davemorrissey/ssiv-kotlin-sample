@@ -94,7 +94,7 @@
     <string name="pager.title">View pager gallery</string>
     <string name="pager.p1.subtitle">Horizontal</string>
     <string name="pager.p1.text">
-        This gallery has two images in a ViewPager. Swipe to move to the
+        This gallery has four images in a ViewPager. Swipe to move to the
         next image. If you\'re zoomed in on an image, you need to pan to the right of it, then swipe
         again to activate the pager.
     </string>
