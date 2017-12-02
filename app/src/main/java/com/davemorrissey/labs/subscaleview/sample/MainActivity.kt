@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openGitHub() {
         val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse("https://github_black.com/davemorrissey/subsampling-scale-image-view")
+        i.data = Uri.parse("https://github.com/davemorrissey/subsampling-scale-image-view")
         startActivity(i)
     }
 
