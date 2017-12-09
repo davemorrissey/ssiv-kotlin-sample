@@ -24,7 +24,7 @@ class ImageDisplayRegionFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         imageView.orientation = SubsamplingScaleImageView.ORIENTATION_90
-        imageView.setImage(ImageSource.asset("card.png").region(Rect(0, 0, 3778, 2834)))
+        imageView.setImage(ImageSource.asset("card.png").region(Rect(5200, 651, 8200, 3250)))
         previous.setOnClickListener { (parentFragment as ImageDisplayFragment).previous() }
         rotate.setOnClickListener { imageView.orientation = (imageView.orientation + 90) % 360 }
     }
