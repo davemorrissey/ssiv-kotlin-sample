@@ -15,6 +15,11 @@ pre-release versions of Android build tools so I can experiment with new feature
 
 [![Get it on Google Play](docs/images/google_play.png)](https://play.google.com/store/apps/details?id=com.davemorrissey.labs.subscaleview.sample)
 
+## Screenshots
+
+![Screenshot 1](docs/images/screenshot1.png)
+![Screenshot 2](docs/images/screenshot2.png)
+
 ## About
 
 Copyright 2017 David Morrissey, and licensed under the Apache License, Version 2.0.
