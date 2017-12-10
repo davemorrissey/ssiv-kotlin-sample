@@ -11,6 +11,10 @@ setups and serves as a test app.
 Kotlin is used as a learning exercise, and I may make incompatible changes or update to unstable or
 pre-release versions of Android build tools so I can experiment with new features.
 
+## Download from Google Play
+
+[![Get it on Google Play](docs/images/google_play.png)](https://play.google.com/store/apps/details?id=com.davemorrissey.labs.subscaleview.sample)
+
 ## About
 
 Copyright 2017 David Morrissey, and licensed under the Apache License, Version 2.0.
