@@ -22,7 +22,7 @@ pre-release versions of Android build tools so I can experiment with new feature
 
 ## About
 
-Copyright 2017 David Morrissey, and licensed under the Apache License, Version 2.0.
+Copyright 2018 David Morrissey, and licensed under the Apache License, Version 2.0.
 
 ## Photo credits
 
