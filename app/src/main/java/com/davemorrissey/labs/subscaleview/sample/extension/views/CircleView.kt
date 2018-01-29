@@ -28,9 +28,7 @@ class CircleView @JvmOverloads constructor(context: Context, attr: AttributeSet?
         super.onDraw(canvas)
 
         // Don't draw pin before image is ready so it doesn't move around during setup.
-        if (!isReady) {
-            return
-        }
+        if (!isReady) return
 
         sCenter.set((sWidth / 2).toFloat(), (sHeight / 2).toFloat())
         sourceToViewCoord(sCenter, vCenter)

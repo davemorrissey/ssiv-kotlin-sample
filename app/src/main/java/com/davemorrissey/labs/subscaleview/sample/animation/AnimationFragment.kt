@@ -32,11 +32,7 @@ class AnimationFragment : AbstractPagesFragment(animation_title, animation_activ
     }
 
     override fun onPageChanged(page: Int) {
-        if (page == 2) {
-            imageView.setPanLimit(PAN_LIMIT_CENTER)
-        } else {
-            imageView.setPanLimit(PAN_LIMIT_INSIDE)
-        }
+        imageView.setPanLimit(if (page == 2) PAN_LIMIT_CENTER else PAN_LIMIT_INSIDE)
     }
 
     private fun play() {

@@ -33,7 +33,7 @@ abstract class AbstractFragmentsFragment protected constructor(private val title
         outState?.putInt(BUNDLE_PAGE, page)
     }
 
-    operator fun next() {
+    fun next() {
         page++
         updateNotes()
     }
