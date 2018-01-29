@@ -31,9 +31,9 @@ class AdvancedEventHandlingFragment : AbstractPagesFragment(advancedevent_title,
             override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
                 if (imageView.isReady) {
                     val sCoord = imageView.viewToSourceCoord(e.x, e.y)
-                    Toast.makeText(activity, "Single tap: " + sCoord.x.toInt() + ", " + sCoord.y.toInt(), Toast.LENGTH_SHORT).show()
+                    toast("Single tap: ${sCoord.x.toInt()}, ${sCoord.y.toInt()}")
                 } else {
-                    Toast.makeText(activity, "Single tap: Image not ready", Toast.LENGTH_SHORT).show()
+                    toast("Single tap: Image not ready")
                 }
                 return true
             }
@@ -41,18 +41,18 @@ class AdvancedEventHandlingFragment : AbstractPagesFragment(advancedevent_title,
             override fun onLongPress(e: MotionEvent) {
                 if (imageView.isReady) {
                     val sCoord = imageView.viewToSourceCoord(e.x, e.y)
-                    Toast.makeText(activity, "Long press: " + sCoord.x.toInt() + ", " + sCoord.y.toInt(), Toast.LENGTH_SHORT).show()
+                    toast("Long press: ${sCoord.x.toInt()}, ${sCoord.y.toInt()}")
                 } else {
-                    Toast.makeText(activity, "Long press: Image not ready", Toast.LENGTH_SHORT).show()
+                    toast("Long press: Image not ready")
                 }
             }
 
             override fun onDoubleTap(e: MotionEvent): Boolean {
                 if (imageView.isReady) {
                     val sCoord = imageView.viewToSourceCoord(e.x, e.y)
-                    Toast.makeText(activity, "Double tap: " + sCoord.x.toInt() + ", " + sCoord.y.toInt(), Toast.LENGTH_SHORT).show()
+                    toast("Double tap: ${sCoord.x.toInt()}, ${sCoord.y.toInt()}")
                 } else {
-                    Toast.makeText(activity, "Double tap: Image not ready", Toast.LENGTH_SHORT).show()
+                    toast("Double tap: Image not ready")
                 }
                 return true
             }
@@ -60,6 +60,10 @@ class AdvancedEventHandlingFragment : AbstractPagesFragment(advancedevent_title,
 
         imageView.setImage(ImageSource.asset("butterfly.jpg"))
         imageView.setOnTouchListener { _, motionEvent -> gestureDetector.onTouchEvent(motionEvent) }
+    }
+
+    private fun toast(text: String) {
+        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
     }
 
 }
