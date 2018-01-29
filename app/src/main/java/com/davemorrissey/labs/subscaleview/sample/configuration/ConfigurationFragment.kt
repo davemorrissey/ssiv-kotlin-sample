@@ -35,45 +35,37 @@ class ConfigurationFragment : AbstractPagesFragment(configuration_title, pages_a
     }
 
     override fun onPageChanged(page: Int) {
-        when (page) {
-            0 -> imageView.setMinimumDpi(50)
-            else -> imageView.maxScale = 2f
-        }
-        when (page) {
-            1 -> imageView.setMinimumTileDpi(50)
-            else -> imageView.setMinimumTileDpi(500)
-        }
-        when (page) {
-            4 -> imageView.setDoubleTapZoomStyle(ZOOM_FOCUS_CENTER)
-            5 -> imageView.setDoubleTapZoomStyle(ZOOM_FOCUS_CENTER_IMMEDIATE)
-            else -> imageView.setDoubleTapZoomStyle(ZOOM_FOCUS_FIXED)
-        }
-        when (page) {
-            6 -> imageView.setDoubleTapZoomDpi(240)
-            else -> imageView.setDoubleTapZoomScale(1f)
-        }
-        when (page) {
-            7 -> imageView.setPanLimit(PAN_LIMIT_CENTER)
-            8 -> imageView.setPanLimit(PAN_LIMIT_OUTSIDE)
-            else -> imageView.setPanLimit(PAN_LIMIT_INSIDE)
-        }
-        when (page) {
-            9 -> imageView.setDebug(true)
-            else -> imageView.setDebug(false)
-        }
-        when (page) {
-            2 -> {
-                imageView.setScaleAndCenter(0f, PointF(2456f, 1632f))
-                imageView.isPanEnabled = false
+        imageView.apply {
+            when (page) {
+                0 -> setMinimumDpi(50)
+                else -> maxScale = 2f
             }
-            else -> imageView.isPanEnabled = true
-        }
-        when (page) {
-            3 -> {
-                imageView.setScaleAndCenter(1f, PointF(2456f, 1632f))
-                imageView.isZoomEnabled = false
+            setMinimumTileDpi(when (page) {
+                1 -> 50
+                else -> 500
+            })
+            setDoubleTapZoomStyle(when (page) {
+                4 -> ZOOM_FOCUS_CENTER
+                5 -> ZOOM_FOCUS_CENTER_IMMEDIATE
+                else -> ZOOM_FOCUS_FIXED
+            })
+            when (page) {
+                6 -> setDoubleTapZoomDpi(240)
+                else -> setDoubleTapZoomScale(1f)
             }
-            else -> imageView.isZoomEnabled = true
+            setPanLimit(when (page) {
+                7 -> PAN_LIMIT_CENTER
+                8 -> PAN_LIMIT_OUTSIDE
+                else -> PAN_LIMIT_INSIDE
+            })
+            setDebug(page == 9)
+            isPanEnabled = page != 2
+            isZoomEnabled = page != 3
+            if (page == 2) {
+                setScaleAndCenter(0f, PointF(2456f, 1632f))
+            } else if (page == 3) {
+                setScaleAndCenter(1f, PointF(2456f, 1632f))
+            }
         }
     }
 
