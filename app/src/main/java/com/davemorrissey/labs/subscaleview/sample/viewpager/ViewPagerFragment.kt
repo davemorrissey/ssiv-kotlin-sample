@@ -42,8 +42,7 @@ class ViewPagerFragment : Fragment() {
     }
 
     companion object {
-
-        private val BUNDLE_ASSET = "asset"
+        private const val BUNDLE_ASSET = "asset"
     }
 
 }

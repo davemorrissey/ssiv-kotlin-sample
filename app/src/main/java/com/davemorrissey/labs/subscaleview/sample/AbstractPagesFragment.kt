@@ -65,8 +65,7 @@ abstract class AbstractPagesFragment protected constructor(private val title: In
     }
 
     companion object {
-
-        private val BUNDLE_PAGE = "page"
+        private const val BUNDLE_PAGE = "page"
     }
 
 }

@@ -106,6 +106,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val BUNDLE_FRAGMENT = "FRAGMENT"
+        private const val BUNDLE_FRAGMENT = "FRAGMENT"
     }
 }

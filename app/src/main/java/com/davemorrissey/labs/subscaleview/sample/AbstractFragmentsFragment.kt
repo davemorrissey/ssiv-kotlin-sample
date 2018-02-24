@@ -53,8 +53,7 @@ abstract class AbstractFragmentsFragment protected constructor(private val title
     }
 
     companion object {
-
-        private val BUNDLE_PAGE = "page"
+        private const val BUNDLE_PAGE = "page"
     }
 
 }
