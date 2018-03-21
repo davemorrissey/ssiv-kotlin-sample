@@ -62,7 +62,7 @@ class FreehandView @JvmOverloads constructor(context: Context, attr: AttributeSe
                     if (touchCount == 1 && sStart != null && vPrevious != null) {
                         val vDX = Math.abs(event.x - vPrevious.x)
                         val vDY = Math.abs(event.y - vPrevious.y)
-                        if (vDX >= strokeWidth * 5 || vDY >= strokeWidth * 5) {
+                        if (vDX >= strokeWidth || vDY >= strokeWidth) {
                             if (sPoints.isEmpty()) {
                                 sPoints.add(sStart)
                             }
