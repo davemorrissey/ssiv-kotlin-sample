@@ -31,5 +31,5 @@ dependencies {
     implementation "com.android.support:design:$support_version"
     implementation "com.android.support:support-v13:$support_version"
     implementation "com.android.support:exifinterface:$support_version"
-    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.9.0'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
 }

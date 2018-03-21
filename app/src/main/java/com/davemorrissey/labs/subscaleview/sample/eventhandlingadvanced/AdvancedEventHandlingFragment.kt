@@ -29,29 +29,26 @@ class AdvancedEventHandlingFragment : AbstractPagesFragment(advancedevent_title,
         super.onCreate(savedInstanceState)
         val gestureDetector = GestureDetector(activity, object : GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
-                if (imageView.isReady) {
-                    val sCoord = imageView.viewToSourceCoord(e.x, e.y)
-                    toast("Single tap: ${sCoord.x.toInt()}, ${sCoord.y.toInt()}")
-                } else {
+                imageView.viewToSourceCoord(e.x, e.y)?.let {
+                    toast("Single tap: ${it.x.toInt()}, ${it.y.toInt()}")
+                } ?: run {
                     toast("Single tap: Image not ready")
                 }
                 return true
             }
 
             override fun onLongPress(e: MotionEvent) {
-                if (imageView.isReady) {
-                    val sCoord = imageView.viewToSourceCoord(e.x, e.y)
-                    toast("Long press: ${sCoord.x.toInt()}, ${sCoord.y.toInt()}")
-                } else {
+                imageView.viewToSourceCoord(e.x, e.y)?.let {
+                    toast("Long press: ${it.x.toInt()}, ${it.y.toInt()}")
+                } ?: run {
                     toast("Long press: Image not ready")
                 }
             }
 
             override fun onDoubleTap(e: MotionEvent): Boolean {
-                if (imageView.isReady) {
-                    val sCoord = imageView.viewToSourceCoord(e.x, e.y)
-                    toast("Double tap: ${sCoord.x.toInt()}, ${sCoord.y.toInt()}")
-                } else {
+                imageView.viewToSourceCoord(e.x, e.y)?.let {
+                    toast("Double tap: ${it.x.toInt()}, ${it.y.toInt()}")
+                } ?: run {
                     toast("Double tap: Image not ready")
                 }
                 return true

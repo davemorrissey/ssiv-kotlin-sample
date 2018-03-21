@@ -28,8 +28,8 @@ class ViewPagerFragment : Fragment() {
         if (asset == null && savedInstanceState?.containsKey(BUNDLE_ASSET) == true) {
             asset = savedInstanceState.getString(BUNDLE_ASSET)
         }
-        if (asset != null) {
-            imageView.setImage(ImageSource.asset(asset))
+        asset?.let {
+            imageView.setImage(ImageSource.asset(it))
         }
     }
 

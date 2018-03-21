@@ -10,8 +10,6 @@ import android.view.View
 import android.view.View.OnTouchListener
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 
-import java.util.ArrayList
-
 class FreehandView @JvmOverloads constructor(context: Context, attr: AttributeSet? = null) : SubsamplingScaleImageView(context, attr), OnTouchListener {
 
     private val paint = Paint()
@@ -19,12 +17,12 @@ class FreehandView @JvmOverloads constructor(context: Context, attr: AttributeSe
     private val vPoint = PointF()
     private var vPrev = PointF()
     private var vPrevious: PointF? = null
-    private var vStart: PointF? = null
+    private var sStart: PointF? = null
     private var drawing = false
 
     private var strokeWidth: Int = 0
 
-    private var sPoints: MutableList<PointF>? = null
+    private val sPoints: MutableList<PointF> = mutableListOf()
 
     init {
         initialise()
@@ -41,49 +39,51 @@ class FreehandView @JvmOverloads constructor(context: Context, attr: AttributeSe
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (sPoints != null && !drawing) {
+        if (sPoints.isNotEmpty() && !drawing) {
             return super.onTouchEvent(event)
         }
         var consumed = false
         val touchCount = event.pointerCount
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> if (event.actionIndex == 0) {
-                vStart = PointF(event.x, event.y)
+                sStart = viewToSourceCoord(event.x, event.y)
                 vPrevious = PointF(event.x, event.y)
             } else {
-                vStart = null
+                sStart = null
                 vPrevious = null
             }
             MotionEvent.ACTION_MOVE -> {
                 val sCurrentF = viewToSourceCoord(event.x, event.y)
-                val sCurrent = PointF(sCurrentF.x, sCurrentF.y)
+                if (sCurrentF != null) {
+                    val sCurrent = PointF(sCurrentF.x, sCurrentF.y)
 
-                if (touchCount == 1 && vStart != null) {
-                    val sStart = PointF(viewToSourceCoord(vStart!!).x, viewToSourceCoord(vStart!!).y)
-                    val vDX = Math.abs(event.x - vPrevious!!.x)
-                    val vDY = Math.abs(event.y - vPrevious!!.y)
-                    if (vDX >= strokeWidth * 5 || vDY >= strokeWidth * 5) {
-                        if (sPoints == null) {
-                            sPoints = ArrayList()
-                            sPoints!!.add(sStart)
+                    val sStart = this.sStart
+                    val vPrevious = this.vPrevious
+                    if (touchCount == 1 && sStart != null && vPrevious != null) {
+                        val vDX = Math.abs(event.x - vPrevious.x)
+                        val vDY = Math.abs(event.y - vPrevious.y)
+                        if (vDX >= strokeWidth * 5 || vDY >= strokeWidth * 5) {
+                            if (sPoints.isEmpty()) {
+                                sPoints.add(sStart)
+                            }
+                            sPoints.add(sCurrent)
+                            vPrevious.x = event.x
+                            vPrevious.y = event.y
+                            drawing = true
                         }
-                        sPoints!!.add(sCurrent)
-                        vPrevious!!.x = event.x
-                        vPrevious!!.y = event.y
-                        drawing = true
+                        consumed = true
+                        invalidate()
+                    } else if (touchCount == 1) {
+                        // Consume all one touch drags to prevent odd panning effects handled by the superclass.
+                        consumed = true
                     }
-                    consumed = true
-                    invalidate()
-                } else if (touchCount == 1) {
-                    // Consume all one touch drags to prevent odd panning effects handled by the superclass.
-                    consumed = true
                 }
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP -> {
                 invalidate()
                 drawing = false
                 vPrevious = null
-                vStart = null
+                sStart = null
             }
         }
         // Use parent to handle pinch and two-finger pan.
@@ -100,12 +100,12 @@ class FreehandView @JvmOverloads constructor(context: Context, attr: AttributeSe
 
         paint.isAntiAlias = true
 
-        if (sPoints != null && sPoints!!.size >= 2) {
+        if (sPoints.size >= 2) {
             vPath.reset()
-            sourceToViewCoord(sPoints!![0].x, sPoints!![0].y, vPrev)
+            sourceToViewCoord(sPoints[0].x, sPoints[0].y, vPrev)
             vPath.moveTo(vPrev.x, vPrev.y)
-            for (i in 1 until sPoints!!.size) {
-                sourceToViewCoord(sPoints!![i].x, sPoints!![i].y, vPoint)
+            for (i in 1 until sPoints.size) {
+                sourceToViewCoord(sPoints[i].x, sPoints[i].y, vPoint)
                 vPath.quadTo(vPrev.x, vPrev.y, (vPoint.x + vPrev.x) / 2, (vPoint.y + vPrev.y) / 2)
                 vPrev = vPoint
             }
@@ -122,7 +122,7 @@ class FreehandView @JvmOverloads constructor(context: Context, attr: AttributeSe
     }
 
     fun reset() {
-        this.sPoints = null
+        this.sPoints.clear()
         invalidate()
     }
 

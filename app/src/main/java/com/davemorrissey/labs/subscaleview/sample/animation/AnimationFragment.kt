@@ -43,11 +43,15 @@ class AnimationFragment : AbstractPagesFragment(animation_title, animation_activ
             val scale = random.nextFloat() * (maxScale - minScale) + minScale
             val center = PointF(random.nextInt(imageView.sWidth).toFloat(), random.nextInt(imageView.sHeight).toFloat())
             imageView.setPin(center)
-            val animationBuilder = imageView.animateScaleAndCenter(scale, center)
-            if (page == 3) {
-                animationBuilder.withDuration(2000).withEasing(EASE_OUT_QUAD).withInterruptible(false).start()
-            } else {
-                animationBuilder.withDuration(750).start()
+            imageView.animateScaleAndCenter(scale, center)?.apply {
+                if (page == 3) {
+                    withDuration(2000)
+                    withEasing(EASE_OUT_QUAD)
+                    withInterruptible(false)
+                } else {
+                    withDuration(750)
+                }
+                start()
             }
         }
     }
